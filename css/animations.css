@@ -1,0 +1,350 @@
+/* Netflix Demo - Animations & Hover Effects */
+
+/* Header scroll effect */
+@keyframes headerScroll {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: var(--dark-bg);
+    }
+}
+
+.header.scrolled {
+    animation: headerScroll 0.3s ease forwards;
+}
+
+/* Button hover animations */
+.btn {
+    transition: transform var(--transition-fast),
+                background-color var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-play:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.btn-info:hover {
+    background-color: rgba(109, 109, 110, 0.5);
+}
+
+.btn-play-large:hover {
+    box-shadow: 0 0 30px rgba(229, 9, 20, 0.4);
+}
+
+/* Content card animations */
+.content-card {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                z-index 0s linear 0.1s;
+}
+
+.content-card:hover {
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.content-card-overlay {
+    transform: translateY(20px);
+    transition: transform var(--transition-medium),
+                opacity var(--transition-medium);
+}
+
+.content-card:hover .content-card-overlay {
+    transform: translateY(0);
+}
+
+/* Card button animations */
+.content-card-btn {
+    transition: transform var(--transition-fast),
+                background-color var(--transition-fast),
+                border-color var(--transition-fast);
+}
+
+.content-card-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Player modal animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.player-modal.active {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.player-container {
+    transform: scale(0.9);
+    transition: transform var(--transition-medium);
+}
+
+.player-modal.active .player-container {
+    transform: scale(1);
+}
+
+/* Player close button hover */
+.player-close:hover {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+/* Info modal slide in */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.info-modal.active .info-container {
+    animation: slideInRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Hero title animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-content .hero-title {
+    animation-delay: 0.1s;
+}
+
+.hero-content .hero-description {
+    animation-delay: 0.3s;
+}
+
+.hero-content .hero-buttons {
+    animation-delay: 0.5s;
+}
+
+/* Navigation link underline animation */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-red);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Profile image hover effect */
+.profile:hover .profile-img {
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    transition: box-shadow var(--transition-fast);
+}
+
+/* Search box animation */
+.search-box:hover .search-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Notification bell animation */
+.notification-btn:hover svg {
+    animation: bellRing 0.5s ease;
+}
+
+@keyframes bellRing {
+    0%, 100% {
+        transform: rotate(0);
+    }
+    20% {
+        transform: rotate(-15deg);
+    }
+    40% {
+        transform: rotate(15deg);
+    }
+    60% {
+        transform: rotate(-10deg);
+    }
+    80% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Content row slider scroll indicator */
+.content-slider::before,
+.content-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.content-slider:hover::before {
+    opacity: 1;
+}
+
+.content-slider:hover::after {
+    opacity: 1;
+}
+
+/* Footer link hover effect */
+.footer-links a {
+    transition: color var(--transition-fast),
+                text-decoration var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--card-bg) 25%,
+        #2a2a2a 50%,
+        var(--card-bg) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Hover scale effect for images */
+.content-card-image {
+    transition: transform var(--transition-medium),
+                filter var(--transition-medium);
+}
+
+.content-card:hover .content-card-image {
+    transform: scale(1.05);
+}
+
+/* Focus states for accessibility */
+.btn:focus,
+.content-card-btn:focus,
+.search-input:focus {
+    outline: 2px solid var(--primary-red);
+    outline-offset: 2px;
+}
+
+/* Logo pulse on load */
+@keyframes logoPulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.logo {
+    animation: logoPulse 0.5s ease forwards;
+}
+
+/* Modal backdrop blur */
+.player-overlay,
+.info-overlay {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Text gradient effect for hero title */
+.hero-logo {
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #e0e0e0 50%,
+        #ffffff 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Gradient overlay on cards */
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+    pointer-events: none;
+}
+
+.content-card:hover::before {
+    opacity: 1;
+}
+
+/* Smooth page load */
+body {
+    animation: pageLoad 0.5s ease forwards;
+}
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
